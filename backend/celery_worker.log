@@ -1,0 +1,107 @@
+ 
+ -------------- celery@DankBook-Bro.local v5.3.4 (emerald-rush)
+--- ***** ----- 
+-- ******* ---- macOS-15.3.2-arm64-arm-64bit-Mach-O 2025-10-29 16:36:25
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         hms:0x106571160
+- ** ---------- .> transport:   redis://localhost:6379/0
+- ** ---------- .> results:     redis://localhost:6379/0
+- *** --- * --- .> concurrency: 12 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . celery_tasks.export_patient_treatments
+  . celery_tasks.send_daily_reminders
+  . celery_tasks.send_monthly_reports
+
+[2025-10-29 16:36:25,828: WARNING/MainProcess] /Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2025-10-29 16:36:25,832: INFO/MainProcess] Connected to redis://localhost:6379/0
+[2025-10-29 16:36:25,832: WARNING/MainProcess] /Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2025-10-29 16:36:25,833: INFO/MainProcess] mingle: searching for neighbors
+[2025-10-29 16:36:26,837: INFO/MainProcess] mingle: all alone
+[2025-10-29 16:36:26,844: INFO/MainProcess] celery@DankBook-Bro.local ready.
+[2025-10-29 16:37:00,633: INFO/MainProcess] Task celery_tasks.export_patient_treatments[77f005db-7ff3-40ac-b421-a28f0788cfb6] received
+[2025-10-29 16:37:00,800: INFO/ForkPoolWorker-8] Task celery_tasks.export_patient_treatments[77f005db-7ff3-40ac-b421-a28f0788cfb6] succeeded in 0.16654500004369766s: 'Patient ID,Patient Name,Doctor,Date,Diagnosis,Prescription,Next Visit
+'
+[2025-10-31 21:45:51,654: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/celery/worker/consumer/consumer.py", line 340, in start
+    blueprint.start(self)
+    ~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/celery/bootsteps.py", line 116, in start
+    step.start(parent)
+    ~~~~~~~~~~^^^^^^^^
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/celery/worker/consumer/consumer.py", line 742, in start
+    c.loop(*c.loop_args())
+    ~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/celery/worker/loops.py", line 97, in asynloop
+    next(loop)
+    ~~~~^^^^^^
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/kombu/asynchronous/hub.py", line 373, in create_loop
+    cb(*cbargs)
+    ~~^^^^^^^^^
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/kombu/transport/redis.py", line 1359, in on_readable
+    self.cycle.on_readable(fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/kombu/transport/redis.py", line 576, in on_readable
+    chan.handlers[type]()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/kombu/transport/redis.py", line 974, in _brpop_read
+    dest__item = self.client.parse_response(self.client.connection,
+                                            'BRPOP',
+                                            **options)
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/redis/client.py", line 553, in parse_response
+    response = connection.read_response()
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/redis/connection.py", line 500, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/redis/_parsers/resp2.py", line 15, in read_response
+    result = self._read_response(disable_decoding=disable_decoding)
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/redis/_parsers/resp2.py", line 25, in _read_response
+    raw = self._buffer.readline()
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/redis/_parsers/socket.py", line 115, in readline
+    self._read_from_socket()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/redis/_parsers/socket.py", line 68, in _read_from_socket
+    raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+redis.exceptions.ConnectionError: Connection closed by server.
+[2025-10-31 21:45:51,935: WARNING/MainProcess] /Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/celery/worker/consumer/consumer.py:391: CPendingDeprecationWarning: 
+In Celery 5.1 we introduced an optional breaking change which
+on connection loss cancels all currently executed tasks with late acknowledgement enabled.
+These tasks cannot be acknowledged as the connection is gone, and the tasks are automatically redelivered
+back to the queue. You can enable this behavior using the worker_cancel_long_running_tasks_on_connection_loss
+setting. In Celery 5.1 it is set to False by default. The setting will be set to True by default in Celery 6.0.
+
+  warnings.warn(CANCEL_TASKS_BY_DEFAULT, CPendingDeprecationWarning)
+
+[2025-10-31 21:45:52,003: WARNING/MainProcess] /Users/vish/Developer/hospitalmgmt-appdev2/backend/venv/lib/python3.13/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2025-10-31 21:45:52,032: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 2.00 seconds... (1/100)
+
+[2025-10-31 21:45:54,050: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 4.00 seconds... (2/100)
+
+[2025-10-31 21:45:58,072: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/0: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 6.00 seconds... (3/100)
+
+
+worker: Warm shutdown (MainProcess)

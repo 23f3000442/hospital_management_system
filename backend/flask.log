@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/app.py", line 19, in <module>
+    from routes.appointment_routes import appointment_bp
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/routes/appointment_routes.py", line 5, in <module>
+    from app import role_required
+  File "/Users/vish/Developer/hospitalmgmt-appdev2/backend/app.py", line 19, in <module>
+    from routes.appointment_routes import appointment_bp
+ImportError: cannot import name 'appointment_bp' from partially initialized module 'routes.appointment_routes' (most likely due to a circular import) (/Users/vish/Developer/hospitalmgmt-appdev2/backend/routes/appointment_routes.py)
